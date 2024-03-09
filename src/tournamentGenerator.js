@@ -105,6 +105,10 @@ class TournamentGenerator {
     eliminateTeam(teamIndex) {
         this.teams.splice(teamIndex, 1);
     }
+
+    getQualifiedTeams() {
+        return this.finalStages[0];
+    }
 }
 
 export default TournamentGenerator;

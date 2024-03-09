@@ -58,7 +58,7 @@ describe('Tournamemnt Class', function () {
   });
 });
 
-describe('TournamentGenerator', () => {
+describe('TournamentGenerator TDD eliminate', () => {
   const teams = [
     { name: 'Team1', players: ['Player1', 'Player2', 'Player3'] },
     { name: 'Team2', players: ['Player4', 'Player5', 'Player6'] },
@@ -77,4 +77,24 @@ describe('TournamentGenerator', () => {
     expect(updatedTeams.length).toBe(initialTeams.length - 1);
     expect(updatedTeams).not.toContain(initialTeams[teamIndex]);
   });
+});
+
+describe('TournamentGenerator TDD qualified', () => {
+  const teams = [
+    { name: 'Team1', players: ['Player1', 'Player2', 'Player3'] },
+    { name: 'Team2', players: ['Player4', 'Player5', 'Player6'] },
+    // Add more teams as needed
+  ];
+
+  const tournamentGenerator = new TournamentGenerator(teams);
+
+  test('should get qualified teams after poules matches', () => {
+    tournamentGenerator.generatePoules();
+    tournamentGenerator.simulatePoulesMatches();
+
+    const qualifiedTeams = tournamentGenerator.getQualifiedTeams();
+
+    expect(qualifiedTeams).toBeDefined();
+    expect(qualifiedTeams.length).toBeGreaterThan(0);
+  })
 });

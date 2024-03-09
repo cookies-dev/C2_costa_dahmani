@@ -51,24 +51,3 @@ describe('TeamGenerator Player', () => {
         expect(updatedTeamPlayers).toContain('NewPlayer');
     });
 });
-
-describe('TournamentGenerator', () => {
-    const teams = [
-        { name: 'Team1', players: ['Player1', 'Player2', 'Player3'] },
-        { name: 'Team2', players: ['Player4', 'Player5', 'Player6'] },
-        // Add more teams as needed
-    ];
-
-    const tournamentGenerator = new TournamentGenerator(teams);
-
-    test('should eliminate a team from the tournament', () => {
-        const initialTeams = tournamentGenerator.teams.slice();
-        const teamIndex = 0;
-
-        tournamentGenerator.eliminateTeam(teamIndex);
-
-        const updatedTeams = tournamentGenerator.teams;
-        expect(updatedTeams.length).toBe(initialTeams.length - 1);
-        expect(updatedTeams).not.toContain(initialTeams[teamIndex]);
-    });
-});

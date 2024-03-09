@@ -30,3 +30,24 @@ describe('TeamGenerator Class', function() {
         });
       });
 });
+
+describe('TeamGenerator Player', () => {
+  const players = ['Player1', 'Player2', 'Player3', 'Player4', 'Player5', 'Player6'];
+  const playersPerTeam = 3;
+  const teamGenerator = new TeamGenerator(players, playersPerTeam);
+
+  test('should add a player to a team', () => {
+    teamGenerator.generateTeams();
+    const initialTeams = teamGenerator.getTeams();
+    const teamIndex = 0;
+    const initialTeamPlayers = [...initialTeams[teamIndex].players];
+    
+    teamGenerator.addPlayerToTeam(teamIndex, 'NewPlayer');
+    
+    const updatedTeams = teamGenerator.getTeams();
+    const updatedTeamPlayers = updatedTeams[teamIndex].players;
+    
+    expect(updatedTeamPlayers.length).toBe(initialTeamPlayers.length + 1);
+    expect(updatedTeamPlayers).toContain('NewPlayer');
+  });
+});

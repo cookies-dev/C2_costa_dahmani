@@ -24,8 +24,8 @@ class TeamGenerator {
   getTeams() {
     return this.teams;
   }
+
 }
 
-export default  TeamGenerator
+export default TeamGenerator
 // Exemple d'utilisation
-

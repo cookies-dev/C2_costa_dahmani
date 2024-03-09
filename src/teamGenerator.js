@@ -25,6 +25,9 @@ class TeamGenerator {
     return this.teams;
   }
 
+  addPlayerToTeam(teamIndex, player) {
+    this.teams[teamIndex].players.push(player);
+  }
 }
 
 export default TeamGenerator

@@ -36,7 +36,7 @@ describe('TeamGenerator Player', () => {
     const playersPerTeam = 3;
     const teamGenerator = new TeamGenerator(players, playersPerTeam);
 
-    test('should add a player to a team', () => {
+    describe('should add a player to a team', () => {
         teamGenerator.generateTeams();
         const initialTeams = teamGenerator.getTeams();
         const teamIndex = 0;
@@ -47,7 +47,7 @@ describe('TeamGenerator Player', () => {
         const updatedTeams = teamGenerator.getTeams();
         const updatedTeamPlayers = updatedTeams[teamIndex].players;
 
-        expect(updatedTeamPlayers.length).toBe(initialTeamPlayers.length + 1);
-        expect(updatedTeamPlayers).toContain('NewPlayer');
+        expect(updatedTeamPlayers.length).to.equal(initialTeamPlayers.length + 1);
+        expect(updatedTeamPlayers).to.include('NewPlayer');
     });
 });

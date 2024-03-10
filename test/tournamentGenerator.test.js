@@ -67,15 +67,15 @@ describe('TournamentGenerator TDD eliminate', () => {
 
   const tournamentGenerator = new TournamentGenerator(teams);
 
-  test('should eliminate a team from the tournament', () => {
+  describe('should eliminate a team from the tournament', () => {
     const initialTeams = tournamentGenerator.teams.slice();
     const teamIndex = 0;
 
     tournamentGenerator.eliminateTeam(teamIndex);
 
     const updatedTeams = tournamentGenerator.teams;
-    expect(updatedTeams.length).toBe(initialTeams.length - 1);
-    expect(updatedTeams).not.toContain(initialTeams[teamIndex]);
+    expect(updatedTeams.length).to.equal(initialTeams.length - 1);
+    expect(updatedTeams).not.to.include(initialTeams[teamIndex]);
   });
 });
 
@@ -88,13 +88,11 @@ describe('TournamentGenerator TDD qualified', () => {
 
   const tournamentGenerator = new TournamentGenerator(teams);
 
-  test('should get qualified teams after poules matches', () => {
+  describe('should get qualified teams after poules matches', () => {
     tournamentGenerator.generatePoules();
     tournamentGenerator.simulatePoulesMatches();
 
     const qualifiedTeams = tournamentGenerator.getQualifiedTeams();
-
-    expect(qualifiedTeams).toBeDefined();
-    expect(qualifiedTeams.length).toBeGreaterThan(0);
+    expect(qualifiedTeams).to.exist;
   })
 });
